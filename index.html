@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hat O — Onur Vatansever</title>
+<meta name="description" content="Onur Vatansever hakkında, bilgisayarındaki izlerden çıkarılmış bir hat haritası.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- KALKIŞ PANOSU -->
+<header class="board" aria-label="Kalkış panosu">
+  <div class="board__top">
+    <span class="board__brand"><span class="roundel">O</span> HAT O &nbsp;/&nbsp; KALKIŞLAR</span>
+    <span class="board__clock" id="clock">--:--:--</span>
+  </div>
+  <div class="board__rows" id="boardRows">
+    <!-- app.js doldurur -->
+  </div>
+</header>
+
+<section class="title">
+  <p class="title__kicker mono">Eskişehir ⇄ İstanbul · Kocaeli &nbsp;—&nbsp; 7 durak · aktarmalı</p>
+  <h1 class="title__name">
+    <span class="w1">Onur</span>
+    <span class="w2">Vatansever</span>
+  </h1>
+  <div class="title__note">
+    <p>Bu sayfa bir “hakkımda” yazısı değil. Bir <em>bilirkişi raporu</em>.</p>
+    <p>Elimde dört klasör, bir <code>git config</code> ve bir e-posta adresi vardı. Her iddianın yanına nereden çıkardığımı yazdım. Bilmediğim şeyleri uydurmadım — onlar 6. durakta, inşaat halinde.</p>
+  </div>
+  <a class="title__go mono" href="#d1">Hatta bin ↓</a>
+</section>
+
+<main class="line" id="line">
+  <div class="line__track" aria-hidden="true">
+    <div class="line__done" id="lineDone"></div>
+  </div>
+  <div class="tram" id="tram" aria-hidden="true"><span>O</span></div>
+
+  <!-- 01 -->
+  <section class="stop" id="d1" data-color="var(--red)">
+    <div class="stop__dot"></div>
+    <header class="stop__head">
+      <span class="stop__no mono">01</span>
+      <h2>Kalkış: <span class="nowrap">oonur</span></h2>
+    </header>
+    <div class="stop__body">
+      <p class="lead">Adı Onur. Soyadı Vatansever. Windows'ta kullanıcı adı <code>oonur</code> — iki “o” ile, çünkü muhtemelen tek “o” çoktan alınmıştı.</p>
+      <ul class="claims">
+        <li><span>Anadolu Üniversitesi'nde.</span><cite>git config user.email → @anadolu.edu.tr</cite></li>
+        <li><span>Türkçe düşünüyor, Türkçe commit atıyor.</span><cite>commit: “ilk surum”</cite></li>
+        <li><span>Kodu yalnız yazmıyor; bir yapay zekâ ajanıyla eşli programlıyor.</span><cite>~/Documents/antigravity/</cite></li>
+        <li><span>“ilk surum” yazarken ü'ye üşeniyor. Saygı duyuyorum.</span><cite>git log, blissful-nobel</cite></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="stop" id="d2" data-color="var(--green)">
+    <div class="stop__dot"></div>
+    <header class="stop__head">
+      <span class="stop__no mono">02</span>
+      <h2>Anadolu Rehber <span class="xfer" style="--c:var(--green)">aktarma</span></h2>
+    </header>
+    <div class="stop__body">
+      <p class="lead">Yunus Emre ve İki Eylül kampüsleri için reklamsız bir öğrenci rehberi. Turist rehberi değil; <strong>prizin nerede olduğunu</strong> söyleyen türden.</p>
+      <div class="ticket-grid">
+        <div class="cell"><b>Priz durumu</b><small>Çalışma alanlarında hangi masa şarj ediyor.</small></div>
+        <div class="cell"><b>Çorba saatleri</b><small>Yemekhane ritmi. Hayati bilgi.</small></div>
+        <div class="cell"><b>Estram &amp; Bağlar</b><small>Tramvay, otobüs, yürüyüş rotaları.</small></div>
+        <div class="cell"><b>Aylık gider</b><small>Yemekhane + ulaşım bütçe hesaplayıcı.</small></div>
+      </div>
+      <p>Ve en sevdiğim kısmı: <strong>sıfır kütüphane</strong>. Saf HTML, CSS, vanilla JS. Katkı yöntemi bile sevimli — <code>data.js</code>'e bir satır ekle, PR aç.</p>
+      <p class="aside mono">→ Bu sayfa da o yüzden framework'süz. Rehbere selam olsun.</p>
+      <cite class="src">kaynak: blissful-nobel/README.md · 11:22 ve 11:40 commitleri</cite>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="stop" id="d3" data-color="var(--orange)">
+    <div class="stop__dot"></div>
+    <header class="stop__head">
+      <span class="stop__no mono">03</span>
+      <h2>Carvo <span class="xfer" style="--c:var(--orange)">gece seferi</span></h2>
+    </header>
+    <div class="stop__body">
+      <p class="lead">Kurumsal filolar için yerinde mobil temizlik. Araçlar mesai dışında şirket otoparkına gelir, tesisten <strong>su ve elektrik almadan</strong> filoyu temizler. İstanbul &amp; Kocaeli.</p>
+
+      <div class="lot" id="lot">
+        <div class="lot__sky"><span class="lot__moon"></span><span class="lot__time mono" id="lotTime">02:00</span></div>
+        <div class="lot__cars" id="lotCars"></div>
+        <div class="lot__van" id="van"><span>CARVO</span></div>
+        <div class="lot__ground"></div>
+      </div>
+      <button class="btn mono" id="shiftBtn">Gece vardiyasını başlat</button>
+
+      <h3 class="mini">Aynı fikri üç kez inşa etmek</h3>
+      <ol class="versions">
+        <li><span class="mono">cool-heisenberg</span><b>v0 — vanilla</b><small>Abril Fatface, nane yeşili, ROI hesaplayıcı, İstanbul haritası.</small></li>
+        <li><span class="mono">carvo</span><b>v1 — React + TS + Vite</b><small>Ciddileşme anı. Oxlint bile var.</small></li>
+        <li><span class="mono">carvov2</span><b>v2 — lacivert &amp; turuncu</b><small>Hero, Services, ProtocolTable, CorporateForm, Faq… <code>fleetData.ts</code>.</small></li>
+      </ol>
+      <p>Üç versiyon ya mükemmeliyetçiliktir ya da ciddiyet. Bence ikisi birden.</p>
+      <cite class="src">kaynak: cool-heisenberg/README.md · carvov2/src/components/Hero.tsx</cite>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="stop" id="d4" data-color="var(--blue)">
+    <div class="stop__dot"></div>
+    <header class="stop__head">
+      <span class="stop__no mono">04</span>
+      <h2>Fizikçiler Meydanı <span class="xfer" style="--c:var(--blue)">4 hat</span></h2>
+    </header>
+    <div class="stop__body">
+      <p class="lead">Onur'un projeleri, bilmeden, 20. yüzyıl fiziğinin isimlerini taşıyan klasörlerde yaşıyor.</p>
+      <div class="sci" id="sci">
+        <button class="sci__card" data-k="nobel">
+          <span class="sci__tag">blissful-</span><b>Nobel</b>
+          <small class="sci__front">Anadolu Rehber</small>
+          <small class="sci__back">Ödülünü dinamitten kazandı. Bu klasör ise çorba saatlerinden.</small>
+        </button>
+        <button class="sci__card" data-k="heisenberg">
+          <span class="sci__tag">cool-</span><b>Heisenberg</b>
+          <small class="sci__front">Carvo v0</small>
+          <small class="sci__back">Belirsizlik ilkesi: bir sitenin hem nerede olduğunu hem de son hali olup olmadığını aynı anda bilemezsin. Bkz. carvov2.</small>
+        </button>
+        <button class="sci__card" data-k="fermi">
+          <span class="sci__tag">modest-</span><b>Fermi</b>
+          <small class="sci__front">bu sayfa</small>
+          <small class="sci__back">Fermi tahmini: az veriden makul sonuç çıkarmak. Bu sayfa tam olarak bu.</small>
+        </button>
+        <button class="sci__card" data-k="meitner">
+          <span class="sci__tag">noble-</span><b>Meitner</b>
+          <small class="sci__front">boş · 11:47</small>
+          <small class="sci__back">Nükleer fisyonu açıkladı, Nobel'i başkası aldı. Bu klasör de henüz kimseye bir şey vermedi. Sırası gelecek.</small>
+        </button>
+      </div>
+      <p class="aside mono">Kartlara dokun →</p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="stop" id="d5" data-color="var(--red)">
+    <div class="stop__dot"></div>
+    <header class="stop__head">
+      <span class="stop__no mono">05</span>
+      <h2>Bugün, 20 Ekim</h2>
+    </header>
+    <div class="stop__body">
+      <p class="lead">Bir saatten kısa sürede üç repo. Sabah verimli geçiyor.</p>
+      <table class="tt mono">
+        <thead><tr><th>Saat</th><th>Hat</th><th>Olay</th></tr></thead>
+        <tbody>
+          <tr><td>11:22</td><td><i style="--c:var(--green)"></i>nobel</td><td>Initial commit</td></tr>
+          <tr><td>11:40</td><td><i style="--c:var(--green)"></i>nobel</td><td>ilk surum</td></tr>
+          <tr><td>11:47</td><td><i style="--c:var(--blue)"></i>meitner</td><td>Initial commit</td></tr>
+          <tr><td>11:52</td><td><i style="--c:var(--red)"></i>fermi</td><td>“bana bir web sitesi yap, ai slop olmasın”</td></tr>
+          <tr class="tt__now"><td id="nowCell">--:--</td><td><i style="--c:var(--ink)"></i>şimdi</td><td>bu sayfayı okuyorsun</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="stop stop--wip" id="d6" data-color="var(--ink)">
+    <div class="stop__dot"></div>
+    <header class="stop__head">
+      <span class="stop__no mono">06</span>
+      <h2>İnşaat halindeki duraklar</h2>
+    </header>
+    <div class="stop__body">
+      <p class="lead">Bunları bilmiyorum. Uydurmak yerine boş bıraktım. Doldurursan bu tarayıcıda açılırlar.</p>
+      <div class="wip" id="wip"></div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="stop stop--end" id="d7" data-color="var(--red)">
+    <div class="stop__dot"></div>
+    <header class="stop__head">
+      <span class="stop__no mono">07</span>
+      <h2>Son durak değil</h2>
+    </header>
+    <div class="stop__body">
+      <div class="pass" id="pass">
+        <div class="pass__left">
+          <span class="mono small">ESKART · TEK BİNİŞ</span>
+          <b>Onur Vatansever</b>
+          <span class="mono small">HAT O · TÜM DURAKLAR</span>
+          <a class="mono" href="mailto:onurvatansever@anadolu.edu.tr">onurvatansever@anadolu.edu.tr</a>
+        </div>
+        <div class="pass__right">
+          <span class="pass__stamp mono" id="stamp">ONAYLANMADI</span>
+        </div>
+      </div>
+      <button class="btn mono" id="validate">Kartı okut</button>
+    </div>
+  </section>
+</main>
+
+<footer class="foot mono">
+  <span>Hat O · modest-fermi · framework kullanılmadı</span>
+  <span>Lütfen inerken tramvay ile peron arasındaki boşluğa dikkat ediniz.</span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
