@@ -208,24 +208,13 @@ a { color: inherit; }
 .pass__links a { font-size: 13px; word-break: break-all; text-decoration: none; border-bottom: 1px solid transparent; justify-self: start; }
 .pass__links a:hover { border-bottom-color: var(--red); color: var(--red); }
 
-/* inşaat */
-.stop--wip .stop__dot { border-style: dashed; }
-.wip { display: grid; gap: 10px; }
-.wip__item {
   display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
   padding: 14px 16px; border: 2px dashed var(--ink);
   background: repeating-linear-gradient(-45deg, #FFB00026 0 14px, #0000 14px 28px);
 }
-.wip__item label { font-weight: 700; font-size: 17px; }
-.wip__item input {
   font: 500 15px var(--mono); padding: 8px 10px; border: 2px solid var(--ink); background: var(--paper);
   width: min(240px, 42vw);
 }
-.wip__item input:focus { outline: 3px solid var(--amber); }
-.wip__item.done { border-style: solid; background: #fff8; }
-.wip__item.done input { border-color: var(--green); }
-.wip__item .state { grid-column: 1 / -1; font: 500 11px var(--mono); letter-spacing: .1em; color: var(--ink-2); }
-.wip__item.done .state { color: var(--green); }
 
 /* kart */
 .pass {
@@ -266,8 +255,6 @@ a { color: inherit; }
   .claims cite { text-align: left; }
   .ticket-grid { grid-template-columns: 1fr; }
   .cell { border-right: 0 !important; border-bottom: 1px solid #0003 !important; }
-  .wip__item { grid-template-columns: 1fr; }
-  .wip__item input { width: 100%; }
   .pass { grid-template-columns: 1fr; }
   .pass__left { border-right: 0; border-bottom: 2px dashed var(--ink); }
   .pass__right { padding: 18px; }

@@ -19,9 +19,9 @@
   const CHARS = ' ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ0123456789:·-';
   const rows = [
     { color: 'var(--red)', msgs: [['ESKİŞEHİR', 'KALKIŞ'], ['ANADOLU ÜNİVERSİTESİ', '3 DK'], ['İKİ EYLÜL · YUNUS EMRE', 'AKT.']] },
-    { color: 'var(--orange)', msgs: [['CARVO · GECE SEFERİ', '02:00'], ['İSTANBUL · KOCAELİ', 'SAHA'], ['FİLO TERTEMİZ', '05:30']] },
+    { color: 'var(--orange)', msgs: [['CARVO · GECE SEFERİ', '02:00'], ['İSTANBUL · FİLO', 'SAHA'], ['FİLO TERTEMİZ', '05:30']] },
     { color: 'var(--green)', msgs: [['YAN HATLAR', 'AKT.'], ['BETTERMEDIUM', '★ 5.0'], ['BTK DATATHON', '2026']] },
-    { color: '#555', msgs: [['İNŞAAT HALİNDEKİ DURAK', 'BELİRS'], ['SON DURAK DEĞİL', '∞'], ['ONUR VATANSEVER', 'ŞİMDİ']] },
+    { color: '#555', msgs: [['SON DURAK DEĞİL', '∞'], ['ESKART · TEK BİNİŞ', 'HAZIR'], ['ONUR VATANSEVER', 'ŞİMDİ']] },
   ];
   const boardRows = $('#boardRows');
   const makeFlaps = (el, len) => {
@@ -156,42 +156,6 @@
       shiftBtn.textContent = 'Filo temiz, şebeke suyu: 0 L. Tekrar?';
     };
     requestAnimationFrame(step);
-  });
-
-  /* ---------- İnşaat halindeki duraklar ---------- */
-  const questions = [
-    ['bolum', 'Hangi bölümde okuyorsun?'],
-    ['takim', 'Eskişehirspor mu, başka bir takım mı, hiçbiri mi?'],
-    ['icecek', 'Çay mı, kahve mi?'],
-    ['hafta', 'Hafta sonu Eskişehir\'de ne yapılır?'],
-    ['muzik', 'Yolda ne dinliyorsun?'],
-    ['mekan', 'Eskişehir\'de en sevdiğin yer?'],
-  ];
-  const KEY = 'hatO.answers';
-  const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
-  const wip = $('#wip');
-  questions.forEach(([k, q]) => {
-    const item = document.createElement('div');
-    item.className = 'wip__item';
-    item.innerHTML = `
-      <label for="q-${k}">${q}</label>
-      <input id="q-${k}" type="text" maxlength="60" placeholder="—" autocomplete="off">
-      <span class="state"></span>`;
-    const input = $('input', item);
-    const state = $('.state', item);
-    const render = () => {
-      const v = (saved[k] || '').trim();
-      item.classList.toggle('done', !!v);
-      state.textContent = v ? 'DURAK HİZMETE AÇILDI' : 'YAPIM AŞAMASINDA · BİLGİ YOK';
-    };
-    input.value = saved[k] || '';
-    input.addEventListener('input', () => {
-      saved[k] = input.value;
-      localStorage.setItem(KEY, JSON.stringify(saved));
-      render();
-    });
-    render();
-    wip.appendChild(item);
   });
 
   /* ---------- Kart okut ---------- */
