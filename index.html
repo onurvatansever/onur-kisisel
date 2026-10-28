@@ -3,210 +3,208 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hat O — Onur Vatansever</title>
-<meta name="description" content="Onur Vatansever hakkında, bilgisayarındaki izlerden çıkarılmış bir hat haritası.">
+<title>Onur Vatansever — köpüğün altındaki plaka</title>
+<meta name="description" content="Onur Vatansever. Anadolu Üniversitesi, Eskişehir. Veri mühendisliği, makine öğrenmesi ve sahada çalışan sistemler.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- KALKIŞ PANOSU -->
-<header class="board" aria-label="Kalkış panosu">
-  <div class="board__top">
-    <span class="board__brand"><span class="roundel">O</span> HAT O &nbsp;/&nbsp; KALKIŞLAR</span>
-    <span class="board__clock" id="clock">--:--:--</span>
+<nav class="nav mono">
+  <a href="#top" class="nav__me">ONUR VATANSEVER</a>
+  <div class="nav__links">
+    <a href="#saha"><b>01</b> Saha</a>
+    <a href="#eklenti"><b>02</b> Eklenti</a>
+    <a href="#defter"><b>03</b> Defter</a>
+    <a href="#iletisim"><b>04</b> İletişim</a>
   </div>
-  <div class="board__rows" id="boardRows">
-    <!-- app.js doldurur -->
+</nav>
+
+<!-- ============ HERO: köpüklü plaka ============ -->
+<header class="hero" id="top">
+  <div class="hero__copy">
+    <p class="eyebrow mono">Eskişehir · Anadolu Üniversitesi · veri mühendisliği &amp; ML</p>
+    <h1>Köpüğün altındaki<br>plakayı okurum.</h1>
+    <p class="hero__sub">Ben Onur. Gerçek bir operasyonda, her gün çalışan veri sistemleri kuruyorum: sunucusuz pipeline'lar, görüntü işleme, ve bu işlerin yanına bir Firefox eklentisi.</p>
+  </div>
+
+  <div class="bay">
+    <div class="bumper">
+      <div class="plate" id="plate" aria-label="Plaka: 26 ONR 88">
+        <span class="plate__band"><i></i>TR</span>
+        <span class="plate__chars" id="plateChars"></span>
+        <span class="bolt bolt--l"></span><span class="bolt bolt--r"></span>
+        <canvas class="foam" id="foam" aria-hidden="true"></canvas>
+      </div>
+      <p class="bay__hint mono" id="hint">← sürükle, köpüğü sil →</p>
+    </div>
+
+    <div class="readout mono" aria-live="polite">
+      <div class="readout__row"><span>rekognition.detect_text()</span><span id="conf">güven —</span></div>
+      <div class="readout__raw"><small>ham okuma</small><b id="raw">? ? ? ? ? ? ?</b></div>
+      <div class="readout__fix"><small>filo hafızası</small><b id="fixed">—</b></div>
+      <div class="readout__msg" id="msg">Plaka köpük altında. Okunacak bir şey yok.</div>
+    </div>
   </div>
 </header>
 
-<section class="title">
-  <p class="title__kicker mono">Eskişehir ⇄ İstanbul · Kocaeli &nbsp;—&nbsp; 7 durak · aktarmalı</p>
-  <h1 class="title__name">
-    <span class="w1">Onur</span>
-    <span class="w2">Vatansever</span>
-  </h1>
-  <div class="title__note">
-    <p>Bu sayfa bir “hakkımda” yazısı değil. Bir <em>bilirkişi raporu</em>.</p>
-    <p>Elimde dört klasör, bir <code>git config</code> ve bir e-posta adresi vardı. Her iddianın yanına nereden çıkardığımı yazdım. Bilmediğim şeyleri uydurmadım — onlar 6. durakta, inşaat halinde.</p>
-  </div>
-  <a class="title__go mono" href="#d1">Hatta bin ↓</a>
-</section>
+<!-- ============ 01 SAHA ============ -->
+<section class="sec" id="saha">
+  <header class="sec__head">
+    <span class="sec__no mono">01</span>
+    <h2>Saha</h2>
+    <p class="sec__tag mono">carvo-plate-tracker · Python 3.12 · AWS</p>
+  </header>
 
-<main class="line" id="line">
-  <div class="line__track" aria-hidden="true">
-    <div class="line__done" id="lineDone"></div>
-  </div>
-  <div class="tram" id="tram" aria-hidden="true"><span>O</span></div>
-
-  <!-- 01 -->
-  <section class="stop" id="d1" data-color="var(--red)">
-    <div class="stop__dot"></div>
-    <header class="stop__head">
-      <span class="stop__no mono">01</span>
-      <h2>Kalkış: <span class="nowrap">oonur</span></h2>
-    </header>
-    <div class="stop__body">
-      <p class="lead">Adı Onur. Soyadı Vatansever. Windows'ta kullanıcı adı <code>oonur</code> — iki “o” ile, çünkü muhtemelen tek “o” çoktan alınmıştı.</p>
-      <ul class="claims">
-        <li><span>Anadolu Üniversitesi'nde.</span><cite>git config user.email → @anadolu.edu.tr</cite></li>
-        <li><span>Türkçe düşünüyor, Türkçe commit atıyor.</span><cite>commit: “ilk surum”</cite></li>
-        <li><span>Kodu yalnız yazmıyor; bir yapay zekâ ajanıyla eşli programlıyor.</span><cite>~/Documents/antigravity/</cite></li>
-        <li><span>“ilk surum” yazarken ü'ye üşeniyor. Saygı duyuyorum.</span><cite>git log, blissful-nobel</cite></li>
+  <div class="sec__grid">
+    <div class="prose">
+      <p class="big">Filo yıkamada her gün yüzlerce araç geçer. Kâğıt listeler yanlış plaka, mükerrer kayıt ve ay sonu kavgası demek.</p>
+      <p>Carvo'nun filo operasyonu için şunu yaptım: personel yıkadığı aracın fotoğrafını Telegram botuna atıyor. Bir Lambda fonksiyonu plakayı <strong>Amazon Rekognition</strong> ile okuyor, S3'teki geçmiş yıkama kayıtlarıyla karşılaştırıyor, aynı gün tekrar girişini engelliyor ve tek komutla faturalanmaya hazır bir <code>.xlsx</code> çıkarıyor.</p>
+      <p>İşin zor kısmı OCR değil, <em>ıslak</em> OCR. Köpük, parlama ve plaka vidası harfleri bozuyor. O yüzden okunan metni filonun hafızasıyla eşleştiren görsel bir karışıklık matrisi yazdım:</p>
+      <div class="confuse mono">
+        <span>B<i>↔</i>8</span><span>D<i>↔</i>0</span><span>M<i>↔</i>N</span><span>S<i>↔</i>5</span>
+      </div>
+      <ul class="facts">
+        <li><b>Açgözlü regex yok.</b> Her geçerli <code>(il, harf, sayı)</code> bölünmesi tek tek değerlendiriliyor. İki satırlı kare plakalar birleştiriliyor.</li>
+        <li><b>Excel için kütüphane yok.</b> <code>.xlsx</code> dosyası, standart <code>zipfile</code> ile bellekte Office Open XML olarak üretiliyor.</li>
+        <li><b>Durumsuz güvenlik.</b> Webhook <code>hmac.compare_digest</code> ile doğrulanıyor. Geri al/değiştir butonları ayrı bir tablo tutmadan çalışıyor.</li>
+        <li><b>Fonksiyon adları Türkçe:</b> <code>karakterleri_duzelt()</code>, <code>filo_eslesmesi_bul()</code>, <code>bugunun_tarihi()</code>.</li>
       </ul>
     </div>
-  </section>
 
-  <!-- 02 -->
-  <section class="stop" id="d2" data-color="var(--green)">
-    <div class="stop__dot"></div>
-    <header class="stop__head">
-      <span class="stop__no mono">02</span>
-      <h2>Anadolu Rehber <span class="xfer" style="--c:var(--green)">aktarma</span></h2>
-    </header>
-    <div class="stop__body">
-      <p class="lead">Yunus Emre ve İki Eylül kampüsleri için reklamsız bir öğrenci rehberi. Turist rehberi değil; <strong>prizin nerede olduğunu</strong> söyleyen türden.</p>
-      <div class="ticket-grid">
-        <div class="cell"><b>Priz durumu</b><small>Çalışma alanlarında hangi masa şarj ediyor.</small></div>
-        <div class="cell"><b>Çorba saatleri</b><small>Yemekhane ritmi. Hayati bilgi.</small></div>
-        <div class="cell"><b>Estram &amp; Bağlar</b><small>Tramvay, otobüs, yürüyüş rotaları.</small></div>
-        <div class="cell"><b>Aylık gider</b><small>Yemekhane + ulaşım bütçe hesaplayıcı.</small></div>
-      </div>
-      <p>Ve en sevdiğim kısmı: <strong>sıfır kütüphane</strong>. Saf HTML, CSS, vanilla JS. Katkı yöntemi bile sevimli — <code>data.js</code>'e bir satır ekle, PR aç.</p>
-      <p class="aside mono">→ Bu sayfa da o yüzden framework'süz. Rehbere selam olsun.</p>
-      <cite class="src">kaynak: blissful-nobel/README.md · 11:22 ve 11:40 commitleri</cite>
-    </div>
-  </section>
-
-  <!-- 03 -->
-  <section class="stop" id="d3" data-color="var(--orange)">
-    <div class="stop__dot"></div>
-    <header class="stop__head">
-      <span class="stop__no mono">03</span>
-      <h2>Carvo <span class="xfer" style="--c:var(--orange)">gece seferi</span></h2>
-    </header>
-    <div class="stop__body">
-      <p class="lead">Kurumsal filolar için yerinde mobil temizlik. Araçlar mesai dışında şirket otoparkına gelir, tesisten <strong>su ve elektrik almadan</strong> filoyu temizler. İstanbul &amp; Kocaeli.</p>
-
+    <div class="ops">
       <div class="lot" id="lot">
-        <div class="lot__sky"><span class="lot__moon"></span><span class="lot__time mono" id="lotTime">02:00</span></div>
+        <span class="lot__time mono" id="lotTime">02:00</span>
+        <span class="lot__moon"></span>
         <div class="lot__cars" id="lotCars"></div>
         <div class="lot__van" id="van"><span>CARVO</span></div>
         <div class="lot__ground"></div>
       </div>
-      <button class="btn mono" id="shiftBtn">Gece vardiyasını başlat</button>
 
-      <h3 class="mini">Aynı fikri üç kez inşa etmek</h3>
-      <ol class="versions">
-        <li><span class="mono">cool-heisenberg</span><b>v0 — vanilla</b><small>Abril Fatface, nane yeşili, ROI hesaplayıcı, İstanbul haritası.</small></li>
-        <li><span class="mono">carvo</span><b>v1 — React + TS + Vite</b><small>Ciddileşme anı. Oxlint bile var.</small></li>
-        <li><span class="mono">carvov2</span><b>v2 — lacivert &amp; turuncu</b><small>Hero, Services, ProtocolTable, CorporateForm, Faq… <code>fleetData.ts</code>.</small></li>
-      </ol>
-      <p>Üç versiyon ya mükemmeliyetçiliktir ya da ciddiyet. Bence ikisi birden.</p>
-      <cite class="src">kaynak: cool-heisenberg/README.md · carvov2/src/components/Hero.tsx</cite>
-    </div>
-  </section>
-
-  <!-- 04 -->
-  <section class="stop" id="d4" data-color="var(--blue)">
-    <div class="stop__dot"></div>
-    <header class="stop__head">
-      <span class="stop__no mono">04</span>
-      <h2>Fizikçiler Meydanı <span class="xfer" style="--c:var(--blue)">4 hat</span></h2>
-    </header>
-    <div class="stop__body">
-      <p class="lead">Onur'un projeleri, bilmeden, 20. yüzyıl fiziğinin isimlerini taşıyan klasörlerde yaşıyor.</p>
-      <div class="sci" id="sci">
-        <button class="sci__card" data-k="nobel">
-          <span class="sci__tag">blissful-</span><b>Nobel</b>
-          <small class="sci__front">Anadolu Rehber</small>
-          <small class="sci__back">Ödülünü dinamitten kazandı. Bu klasör ise çorba saatlerinden.</small>
-        </button>
-        <button class="sci__card" data-k="heisenberg">
-          <span class="sci__tag">cool-</span><b>Heisenberg</b>
-          <small class="sci__front">Carvo v0</small>
-          <small class="sci__back">Belirsizlik ilkesi: bir sitenin hem nerede olduğunu hem de son hali olup olmadığını aynı anda bilemezsin. Bkz. carvov2.</small>
-        </button>
-        <button class="sci__card" data-k="fermi">
-          <span class="sci__tag">modest-</span><b>Fermi</b>
-          <small class="sci__front">bu sayfa</small>
-          <small class="sci__back">Fermi tahmini: az veriden makul sonuç çıkarmak. Bu sayfa tam olarak bu.</small>
-        </button>
-        <button class="sci__card" data-k="meitner">
-          <span class="sci__tag">noble-</span><b>Meitner</b>
-          <small class="sci__front">boş · 11:47</small>
-          <small class="sci__back">Nükleer fisyonu açıkladı, Nobel'i başkası aldı. Bu klasör de henüz kimseye bir şey vermedi. Sırası gelecek.</small>
-        </button>
-      </div>
-      <p class="aside mono">Kartlara dokun →</p>
-    </div>
-  </section>
-
-  <!-- 05 -->
-  <section class="stop" id="d5" data-color="var(--red)">
-    <div class="stop__dot"></div>
-    <header class="stop__head">
-      <span class="stop__no mono">05</span>
-      <h2>Bugün, 20 Ekim</h2>
-    </header>
-    <div class="stop__body">
-      <p class="lead">Bir saatten kısa sürede üç repo. Sabah verimli geçiyor.</p>
-      <table class="tt mono">
-        <thead><tr><th>Saat</th><th>Hat</th><th>Olay</th></tr></thead>
-        <tbody>
-          <tr><td>11:22</td><td><i style="--c:var(--green)"></i>nobel</td><td>Initial commit</td></tr>
-          <tr><td>11:40</td><td><i style="--c:var(--green)"></i>nobel</td><td>ilk surum</td></tr>
-          <tr><td>11:47</td><td><i style="--c:var(--blue)"></i>meitner</td><td>Initial commit</td></tr>
-          <tr><td>11:52</td><td><i style="--c:var(--red)"></i>fermi</td><td>“bana bir web sitesi yap, ai slop olmasın”</td></tr>
-          <tr class="tt__now"><td id="nowCell">--:--</td><td><i style="--c:var(--ink)"></i>şimdi</td><td>bu sayfayı okuyorsun</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- 06 -->
-  <section class="stop stop--wip" id="d6" data-color="var(--ink)">
-    <div class="stop__dot"></div>
-    <header class="stop__head">
-      <span class="stop__no mono">06</span>
-      <h2>İnşaat halindeki duraklar</h2>
-    </header>
-    <div class="stop__body">
-      <p class="lead">Bunları bilmiyorum. Uydurmak yerine boş bıraktım. Doldurursan bu tarayıcıda açılırlar.</p>
-      <div class="wip" id="wip"></div>
-    </div>
-  </section>
-
-  <!-- 07 -->
-  <section class="stop stop--end" id="d7" data-color="var(--red)">
-    <div class="stop__dot"></div>
-    <header class="stop__head">
-      <span class="stop__no mono">07</span>
-      <h2>Son durak değil</h2>
-    </header>
-    <div class="stop__body">
-      <div class="pass" id="pass">
-        <div class="pass__left">
-          <span class="mono small">ESKART · TEK BİNİŞ</span>
-          <b>Onur Vatansever</b>
-          <span class="mono small">HAT O · TÜM DURAKLAR</span>
-          <a class="mono" href="mailto:onurvatansever@anadolu.edu.tr">onurvatansever@anadolu.edu.tr</a>
+      <div class="tg">
+        <div class="tg__head mono"><span class="tg__ava">C</span><div><b>Carvo Yıkama Takip</b><small id="tgStatus">bot · çevrimiçi</small></div></div>
+        <div class="tg__log" id="tgLog">
+          <div class="tg__sys mono">Bugün</div>
         </div>
-        <div class="pass__right">
-          <span class="pass__stamp mono" id="stamp">ONAYLANMADI</span>
+        <div class="tg__bar mono">
+          <button id="shiftBtn">▶ Gece vardiyası</button>
+          <button id="cmdBugun" disabled>/bugun</button>
+          <button id="cmdExcel" disabled>/excel</button>
         </div>
       </div>
-      <button class="btn mono" id="validate">Kartı okut</button>
+      <p class="note mono">Mesaj formatı botun kendisinden alındı. Plakalar uydurma. <code>/excel</code> gerçekten bir dosya indiriyor.</p>
     </div>
-  </section>
-</main>
+  </div>
+</section>
+
+<!-- ============ 02 EKLENTİ ============ -->
+<section class="sec sec--paper" id="eklenti">
+  <header class="sec__head">
+    <span class="sec__no mono">02</span>
+    <h2>Eklenti</h2>
+    <p class="sec__tag mono">BetterMedium · Firefox Add-ons · v0.1.0</p>
+  </header>
+
+  <div class="sec__grid">
+    <div class="prose">
+      <p class="big">Medium'un günlük özet maillerinde hangi yazının ücretsiz okunabildiği belli değil.</p>
+      <p>BetterMedium, Gmail'de açık duran Medium Daily Digest'i tarıyor ve herkese açık yazılarla yazarların paylaştığı Friend Link'leri tek yerde topluyor.</p>
+      <p><strong>Paywall'u aşmıyor.</strong> Backend, hesap ve telemetri yok. Belirsiz ya da engellenmiş bir sayfa asla “ücretsiz” diye gösterilmiyor.</p>
+      <p class="stat mono"><span>★ 5.0</span> 1 değerlendirme. Örneklem küçük ama memnuniyet %100.</p>
+      <a class="link mono" href="https://addons.mozilla.org/en-US/firefox/addon/bettermedium/" target="_blank" rel="noopener">addons.mozilla.org/…/bettermedium ↗</a>
+    </div>
+
+    <div class="mail">
+      <div class="mail__top">
+        <div class="mail__from"><b>Medium Daily Digest</b><small>noreply@medium.com</small></div>
+        <label class="switch mono"><input type="checkbox" id="bmToggle"><span></span>BetterMedium</label>
+      </div>
+      <ul class="mail__list" id="mailList"></ul>
+      <div class="mail__sum mono" id="bmSum">Eklenti kapalı. Hepsi aynı görünüyor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 DEFTER ============ -->
+<section class="sec" id="defter">
+  <header class="sec__head">
+    <span class="sec__no mono">03</span>
+    <h2>Defter</h2>
+    <p class="sec__tag mono">Jupyter · pandas · scikit-learn · statsmodels</p>
+  </header>
+
+  <div class="nb">
+    <!-- hücre 1 -->
+    <article class="cell">
+      <div class="cell__in mono"><span class="cell__n">In [1]:</span><code>btk_datathon_2026.stack(models=["catboost","lightgbm","xgboost"], meta="RidgeCV")</code></div>
+      <div class="cell__out">
+        <div class="cell__text">
+          <h3>BTK Datathon 2026</h3>
+          <p>Öğrenci metriklerinden <code>career_success_score</code> tahmini. Mentor metinleri <code>bert-base-turkish</code> ile embedding'e çevrildi. TF-IDF + Ridge ile sızıntısız OOF meta-özellikler üretildi. <code>IterativeImputer</code> dahil her dönüşüm yalnızca train üzerinde öğrenildi.</p>
+        </div>
+        <div class="bars" id="bars" data-caption="10-fold OOF MSE · düşük = iyi">
+          <div class="bar" data-v="76.19" data-w="73.6"><span>CatBoost</span></div>
+          <div class="bar" data-v="77.89"><span>LightGBM</span></div>
+          <div class="bar" data-v="78.03"><span>XGBoost</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- hücre 2 -->
+    <article class="cell">
+      <div class="cell__in mono"><span class="cell__n">In [2]:</span><code>ab_test.ztest(new_page, old_page)</code></div>
+      <div class="cell__out">
+        <div class="cell__text">
+          <h3>A/B testi: yeni sayfa daha iyi mi?</h3>
+          <p>294.480 satır. Grubu ile gördüğü sayfa uyuşmayanlar ve tekrar eden kullanıcılar atıldı, 290.585 kaldı. Sonra iki oran z-testi ve ki-kare uygulandı.</p>
+          <p class="verdict">Hayır. Yeni sayfa daha iyi değil. İstatistiksel bir fark bulunamadı. Çoğu analizin en dürüst cevabı bu.</p>
+        </div>
+        <pre class="mono term">  Yeni Sayfa : 17,264 / 145,311  →  11.88%
+  Eski Sayfa : 17,489 / 145,274  →  12.04%
+  ─────────────────────────────────────────
+  Z-Testi    : z = -1.3116   p = 0.1897
+  Ki-Kare    : χ² =  1.7054   p = 0.1916
+  ─────────────────────────────────────────
+  SONUÇ      : Anlamlı fark YOK (p &gt; 0.05)</pre>
+      </div>
+    </article>
+
+    <!-- hücre 3 -->
+    <article class="cell">
+      <div class="cell__in mono"><span class="cell__n">In [3]:</span><code>uyku.corr()  # 5 kişilik grup ödevi</code></div>
+      <div class="cell__out">
+        <div class="cell__text">
+          <h3>Yaşam tarzı ve uyku</h3>
+          <p>Hipotez: yaşam tarzı uyku kalitesini etkiler. Normalde adım sayısı arttıkça nabız düşüyor (r = −0.96). Ama “aşırı spor” grubunda nabız 75 bpm'e çıkıyor ve hafif uyku ile derin uyku arasında −0.98'lik ters bir ilişki ortaya çıkıyor. Yani fazla hareket eden vücut, derin uykuya geçmekte zorlanıyor.</p>
+        </div>
+        <div class="corr" id="corr">
+          <div class="corr__item"><b data-r="-0.96">−0.96</b><span>adım ↔ nabız</span></div>
+          <div class="corr__item"><b data-r="-0.98">−0.98</b><span>hafif ↔ derin uyku<br>(aşırı spor grubu)</span></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 04 İLETİŞİM ============ -->
+<section class="sec sec--end" id="iletisim">
+  <header class="sec__head">
+    <span class="sec__no mono">04</span>
+    <h2>İletişim</h2>
+  </header>
+  <div class="plates">
+    <a class="plate plate--sm" href="mailto:oonurhp@gmail.com"><span class="plate__band"><i></i>TR</span><span class="plate__txt">E POSTA</span><small class="mono">oonurhp@gmail.com</small></a>
+    <a class="plate plate--sm" href="https://linkedin.com/in/onur-vatansever88" target="_blank" rel="noopener"><span class="plate__band"><i></i>TR</span><span class="plate__txt">LINKEDIN</span><small class="mono">/in/onur-vatansever88</small></a>
+    <a class="plate plate--sm" href="https://github.com/onurvatansever" target="_blank" rel="noopener"><span class="plate__band"><i></i>TR</span><span class="plate__txt">GITHUB</span><small class="mono">@onurvatansever</small></a>
+  </div>
+  <p class="stack mono">Python · SQL · JavaScript · pandas · NumPy · scikit-learn · AWS Lambda / S3 / Rekognition · Docker · GitHub Actions · Linux</p>
+</section>
 
 <footer class="foot mono">
-  <span>Hat O · modest-fermi · framework kullanılmadı</span>
-  <span>Lütfen inerken tramvay ile peron arasındaki boşluğa dikkat ediniz.</span>
+  <span>26 = Eskişehir. 34 = sahadaki filo.</span>
+  <span>Framework yok. Köpük canvas'ta, plaka DOM'da.</span>
 </footer>
 
 <script src="app.js"></script>
