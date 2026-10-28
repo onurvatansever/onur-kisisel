@@ -8,11 +8,9 @@
 
   /* ---------- Saat ---------- */
   const clock = $('#clock');
-  const nowCell = $('#nowCell');
   const tick = () => {
     const d = new Date();
     clock.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-    nowCell.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}`;
   };
   tick(); setInterval(tick, 1000);
 
@@ -20,10 +18,10 @@
   const DEST_LEN = 22, MIN_LEN = 6;
   const CHARS = ' ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ0123456789:·-';
   const rows = [
-    { color: 'var(--green)', msgs: [['ANADOLU REHBER', 'PERON 2'], ['İKİ EYLÜL', '4 DK'], ['YUNUS EMRE', '7 DK']] },
-    { color: 'var(--orange)', msgs: [['CARVO · GECE SEFERİ', '02:00'], ['İSTANBUL · KOCAELİ', 'SAHA'], ['CARVOV2', 'V2']] },
-    { color: 'var(--blue)', msgs: [['FİZİKÇİLER MEYDANI', '4 HAT'], ['NOBEL · HEISENBERG', 'AKT.'], ['FERMI · MEITNER', 'AKT.']] },
-    { color: 'var(--red)', msgs: [['İNŞAAT HALİNDEKİ DURAK', 'BELİRS'], ['SON DURAK DEĞİL', '∞'], ['ONUR VATANSEVER', 'ŞİMDİ']] },
+    { color: 'var(--red)', msgs: [['ESKİŞEHİR', 'KALKIŞ'], ['ANADOLU ÜNİVERSİTESİ', '3 DK'], ['İKİ EYLÜL · YUNUS EMRE', 'AKT.']] },
+    { color: 'var(--orange)', msgs: [['CARVO · GECE SEFERİ', '02:00'], ['İSTANBUL · KOCAELİ', 'SAHA'], ['FİLO TERTEMİZ', '05:30']] },
+    { color: 'var(--green)', msgs: [['YAN HATLAR', 'AKT.'], ['BETTERMEDIUM', '★ 5.0'], ['BTK DATATHON', '2026']] },
+    { color: '#555', msgs: [['İNŞAAT HALİNDEKİ DURAK', 'BELİRS'], ['SON DURAK DEĞİL', '∞'], ['ONUR VATANSEVER', 'ŞİMDİ']] },
   ];
   const boardRows = $('#boardRows');
   const makeFlaps = (el, len) => {
@@ -160,16 +158,13 @@
     requestAnimationFrame(step);
   });
 
-  /* ---------- Fizikçiler ---------- */
-  $$('.sci__card').forEach((b) => b.addEventListener('click', () => b.classList.toggle('open')));
-
   /* ---------- İnşaat halindeki duraklar ---------- */
   const questions = [
     ['bolum', 'Hangi bölümde okuyorsun?'],
     ['takim', 'Eskişehirspor mu, başka bir takım mı, hiçbiri mi?'],
     ['icecek', 'Çay mı, kahve mi?'],
-    ['carvo', 'Carvo gerçek bir girişim mi, ders projesi mi?'],
-    ['muzik', 'Kod yazarken ne dinliyorsun?'],
+    ['hafta', 'Hafta sonu Eskişehir\'de ne yapılır?'],
+    ['muzik', 'Yolda ne dinliyorsun?'],
     ['mekan', 'Eskişehir\'de en sevdiğin yer?'],
   ];
   const KEY = 'hatO.answers';
