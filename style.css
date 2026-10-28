@@ -208,14 +208,6 @@ a { color: inherit; }
 .pass__links a { font-size: 13px; word-break: break-all; text-decoration: none; border-bottom: 1px solid transparent; justify-self: start; }
 .pass__links a:hover { border-bottom-color: var(--red); color: var(--red); }
 
-  display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
-  padding: 14px 16px; border: 2px dashed var(--ink);
-  background: repeating-linear-gradient(-45deg, #FFB00026 0 14px, #0000 14px 28px);
-}
-  font: 500 15px var(--mono); padding: 8px 10px; border: 2px solid var(--ink); background: var(--paper);
-  width: min(240px, 42vw);
-}
-
 /* kart */
 .pass {
   display: grid; grid-template-columns: 1fr 160px; max-width: 560px;
